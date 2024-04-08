@@ -15,7 +15,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var voteLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
-
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    @IBAction func didTapFavoriteButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
     // TODO: Add favorite button outlet
 
     // TODO: Add favorite button action
@@ -26,9 +30,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // TODO: Update favorite button selected state
-
-
-
+        favoriteButton.layer.cornerRadius = favoriteButton.frame.width / 2
 
         // MARK: Style views
         posterImageView.layer.cornerRadius = 20
