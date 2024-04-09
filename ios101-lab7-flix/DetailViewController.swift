@@ -19,6 +19,11 @@ class DetailViewController: UIViewController {
     
     @IBAction func didTapFavoriteButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            movie.addToFavorites()
+        } else {
+            movie.removeFromFavorites()
+        }
     }
     // TODO: Add favorite button outlet
 
@@ -100,6 +105,15 @@ class DetailViewController: UIViewController {
 
             // Use the Nuke library's load image function to (async) fetch and load the image from the image url.
             Nuke.loadImage(with: imageUrl, into: backdropImageView)
+        }
+        let favorites = Movie.getMovies(forKey: Movie.favoritesKey)
+        // 2.
+        if favorites.contains(movie) {
+            // 3.
+            favoriteButton.isSelected = true
+        } else {
+            // 4.
+            favoriteButton.isSelected = false
         }
     }
 
